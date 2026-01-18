@@ -20,7 +20,6 @@ public class LLMConfiguration {
         return new LLMClient(
                 dataSource,
                 chatModel,
-                10,
                 resourceLoader.getResource("classpath:ai/system.md")
         );
     }

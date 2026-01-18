@@ -6,6 +6,11 @@
 </head>
 <body>
 
+<div th:if="${sessionId != null}">
+    <label for="session">Session:</label>
+    <span id="session" th:text="${sessionId}"></span>
+</div>
+
 <form th:action="@{/adventure}" method="post">
     <label for="message">Message:</label>
     <input type="text" name="message" id="message">
