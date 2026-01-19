@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>DND Slop</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{fragments :: head}"></head>
 <body>
-
 <form th:action="@{/adventure}" method="post">
     <label for="start">Start adventure:</label>
-    <input type="submit" id="start">
+    <input type="submit" id="start" value="Start"/>
 </form>
-
 </body>
 </html>

@@ -46,7 +46,7 @@
 # GAMEPLAY RULES
 
 - The game starts if the player typed the keyword "start"
-- Output 100–140 words total.
+- Output 80–120 words total.
 - Advance the story at every turn.
 - End with exactly three choices.
 - Player responds with 1, 2, or 3 only.
@@ -54,7 +54,7 @@
 
 # CAMPAIGN LIMITS
 
-- Hard stop at turn 10.
+- Hard stop at turn 20.
 - Story must converge toward a final confrontation.
 - Early death and alternate endings are valid.
 

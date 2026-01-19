@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>DND Slop</title>
-    <meta charset="UTF-8">
-</head>
+<head th:replace="~{fragments :: head}"></head>
 <body>
-
 <div th:if="${sessionId != null}">
-    <label for="session">Session:</label>
+    <h2>Session</h2>
     <span id="session" th:text="${sessionId}"></span>
 </div>
-
 <form th:action="@{/adventure}" method="post">
-    <label for="message">Message:</label>
-    <input type="text" name="message" id="message">
-    <input type="submit" value="send" id="send">
+    <div id="response" th:if="${response != null}">
+        <div id="progress">
+            <h2>Message</h2>
+            <span id="message" th:text="${response.getProgression()}"></span>
+        </div>
+        <div id="stats">
+            <h2>Stats</h2>
+            <table id="player">
+                <thead>
+                <tr>
+                    <th>Turn</th>
+                    <th>Level</th>
+                    <th>XP</th>
+                    <th>HP</th>
+                    <th>Gold</th>
+                    <th>Sword</th>
+                    <th>Armor</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${response.getStats().getTurn()}"></td>
+                    <td th:text="${response.getStats().getLevel()}"></td>
+                    <td th:text="${response.getStats().getXp()}"></td>
+                    <td th:text="${response.getStats().getHpCurrent()} + '/' + ${response.getStats().getHpMax()}"></td>
+                    <td th:text="${response.getStats().getGold()}"></td>
+                    <td th:text="${response.getStats().getSword()}"></td>
+                    <td th:text="${response.getStats().getArmor()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="choices">
+            <h2>Action</h2>
+            <label for="choice">What will you do </label>
+            <select id="choice" name="choice">
+                <option value="" disabled selected>Choose your path...</option>
+                <option th:each="choice, iteration : ${response.getChoices()}"
+                        th:value="${iteration.index + 1}"
+                        th:text="${choice}">
+                </option>
+            </select>
+            <input type="submit" value="Adventure" id="send" />
+        </div>
+    </div>
 </form>
-
-<div th:if="${response != null}">
-    <p id="response" th:text="${response}"></p>
-</div>
-
 </body>
 </html>
